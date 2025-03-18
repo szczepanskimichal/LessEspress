@@ -38,7 +38,7 @@ Teammedlemmer:
 
 Christian Ulstein - christian.ulstein@gmail.com
 
-Marianne — Pol135947
+Marianne — marianne.mahieu.artemis@gmail.com 
 
 Peter A. - petera113.pa@gmail.com
 
