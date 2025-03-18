@@ -1,12 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LessEspress
-    </title>
+    <title>Responsivt Header</title>
+    <style>
+        /* Generelle stiler */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: #222; color: white; }
+
+        /* Header-stiler */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #333;
+            color: white;
+        }
+        .logo { font-size: 24px; font-weight: bold; }
+
+        /* Navigasjonsmeny for desktop */
+        .nav-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center; /* Sentraliserer lenkene */
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Knapp for innlogging og visning av bruker */
+        .login-btn, .user-display {
+            padding: 8px 15px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .user-display {
+            display: none; /* Skjules til brukeren logger inn */
+        }
+
+        /* Hamburger-meny for mobil */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        /* Stiler for mobilvisning */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                flex-direction: column;
+                align-items: center; /* Sentraliserer menyen */
+                padding: 10px;
+            }
+            .nav-links {
+                flex-direction: column;
+                justify-content: center; /* Sentraliserer lenkene */
+                gap: 10px;
+            }
+            .menu-toggle {
+                display: block; /* Viser hamburger-menyen */
+                position: absolute;
+                right: 20px;
+            }
+            .nav-container.active {
+                display: flex; /* Viser menyen når aktiv */
+            }
+            .login-btn {
+                display: block;
+                margin-top: 10px; /* Plasserer innloggingsknappen under lenkene */
+                align-self: center;
+            }
+            .user-display {
+                display: block;
+                margin-top: 10px;
+                align-self: center; /* Sentraliserer brukernavnet */
+            }
+        }
+
+        /* Stiler for desktopvisning */
+        @media (min-width: 769px) {
+            .nav-container {
+                display: flex;
+                position: static;
+                flex-direction: row;
+                justify-content: center; /* Sentraliserer navigasjonen */
+                align-items: center;
+                background-color: transparent;
+                padding: 0;
+            }
+            .nav-links {
+                flex-direction: row;
+                justify-content: center; /* Sentraliserer lenkene */
+                gap: 20px;
+            }
+            .menu-toggle {
+                display: none; /* Skjuler hamburger-menyen */
+            }
+            .login-btn {
+                display: block;
+                margin-left: 20px; /* Avstand mellom lenker og innloggingsknapp */
+            }
+            .user-display {
+                display: block;
+                margin-left: 20px;
+            }
+        }
+
+        /* Skjema for innlogging */
+        .login-form {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Innhold som vises etter innlogging */
+        .content {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+        <div class="logo">LOGO</div>
+        <!-- Hamburger-meny for mobil -->
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <!-- Navigasjonsmeny -->
+        <div class="nav-container" id="nav-container">
+            <nav class="nav-links">
+                <a href="#">Hjem</a>
+                <a href="#">Om oss</a>
+                <a href="#">Kontakt</a>
+            </nav>
+            <!-- Knapp for innlogging -->
+            <button class="login-btn" id="login-btn" onclick="showLoginForm()">Logg inn</button>
+        </div>
+        <!-- Viser brukernavn etter innlogging -->
+        <div class="user-display" id="user-display"></div>
+    </header>
+    <!-- Skjema for innlogging -->
+    <div class="login-form" id="login-form">
+        <input type="text" id="username" placeholder="Skriv inn navnet ditt" />
+        <button onclick="login()">Logg inn</button>
+    </div>
+    <!-- Innhold som vises etter innlogging -->
+    <div id="content-container"></div>
+    <script>
+        // Funksjon for å vise/skjule hamburger-menyen
+        function toggleMenu() {
+            const navContainer = document.getElementById("nav-container");
+            navContainer.classList.toggle("active");
+        }
+
+        // Funksjon for å vise innloggingsskjemaet
+        function showLoginForm() {
+            const loginForm = document.getElementById("login-form");
+            loginForm.style.display = "flex";
+        }
+
+        // Funksjon for å logge inn og vise innhold
+        function login() {
+            const username = document.getElementById("username").value.trim();
+            if (username !== "") {
+                // Viser innhold etter innlogging
+                const contentContainer = document.getElementById("content-container");
+                contentContainer.style.display = "block";
+                contentContainer.innerHTML = `
+                    <div class="content">
+                        <h1>Velkommen, <span id="user-name">${username}</span>!</h1>
+                        <p>Dette er innholdet som vises etter innlogging.</p>
+                        <p>Hello World</p>
+                    </div>
+                `;
+                // Skjuler innloggingsskjemaet
+                const loginForm = document.getElementById("login-form");
+                loginForm.style.display = "none";
+
+                // Skjuler "Logg inn"-knappen og viser brukernavn
+                const loginBtn = document.getElementById("login-btn");
+                const userDisplay = document.getElementById("user-display");
+                loginBtn.style.display = "none";
+                userDisplay.style.display = "block";
+                userDisplay.textContent = `Bruker: ${username}`;
+            } else {
+                alert("Vennligst skriv inn navnet ditt.");
+            }
+        }
+    </script>
 </body>
 </html>
