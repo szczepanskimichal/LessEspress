@@ -38,7 +38,7 @@ Teammedlemmer:
 
 Christian Ulstein - christian.ulstein@gmail.com
 
-Pol135947 - Pol135947
+Marianne — Pol135947
 
 Peter A. - petera113.pa@gmail.com
 
