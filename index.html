@@ -29,7 +29,7 @@
         }
         .nav-links {
             display: flex;
-            justify-content: center; /* Sentraliserer lenkene */
+            justify-content: center;
             gap: 20px;
         }
         .nav-links a {
@@ -47,7 +47,21 @@
             border-radius: 5px;
         }
         .user-display {
-            display: none; /* Skjules til brukeren logger inn */
+            display: none;
+        }
+
+        /* Tekst på hovedsiden */
+        .welcome-text {
+            margin: 50px auto; 
+            max-width: 800px;
+            text-align: left; 
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .welcome-text ul {
+            list-style: none; /* Usunięcie kropek z listy */
+            padding: 0;
+            margin: 0;
         }
 
         /* Hamburger-meny for mobil */
@@ -70,31 +84,25 @@
                 width: 100%;
                 background-color: #333;
                 flex-direction: column;
-                align-items: center; /* Sentraliserer menyen */
+                align-items: center;
                 padding: 10px;
             }
             .nav-links {
                 flex-direction: column;
-                justify-content: center; /* Sentraliserer lenkene */
                 gap: 10px;
             }
             .menu-toggle {
-                display: block; /* Viser hamburger-menyen */
+                display: block;
                 position: absolute;
                 right: 20px;
             }
             .nav-container.active {
-                display: flex; /* Viser menyen når aktiv */
+                display: flex;
             }
-            .login-btn {
-                display: block;
-                margin-top: 10px; /* Plasserer innloggingsknappen under lenkene */
-                align-self: center;
-            }
-            .user-display {
+            .login-btn, .user-display {
                 display: block;
                 margin-top: 10px;
-                align-self: center; /* Sentraliserer brukernavnet */
+                align-self: center;
             }
         }
 
@@ -104,24 +112,19 @@
                 display: flex;
                 position: static;
                 flex-direction: row;
-                justify-content: center; /* Sentraliserer navigasjonen */
+                justify-content: center;
                 align-items: center;
                 background-color: transparent;
                 padding: 0;
             }
             .nav-links {
                 flex-direction: row;
-                justify-content: center; /* Sentraliserer lenkene */
                 gap: 20px;
             }
             .menu-toggle {
-                display: none; /* Skjuler hamburger-menyen */
+                display: none;
             }
-            .login-btn {
-                display: block;
-                margin-left: 20px; /* Avstand mellom lenker og innloggingsknapp */
-            }
-            .user-display {
+            .login-btn, .user-display {
                 display: block;
                 margin-left: 20px;
             }
@@ -138,10 +141,27 @@
 
         /* Innhold som vises etter innlogging */
         .content {
-            display: none;
             margin-top: 20px;
             text-align: center;
             color: white;
+        }
+        .content-section {
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        .content-section h2 {
+            text-align: center;
+        }
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .content-section ul li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -158,11 +178,23 @@
                 <a href="#">Kontakt</a>
             </nav>
             <!-- Knapp for innlogging -->
-            <button class="login-btn" id="login-btn" onclick="showLoginForm()">Logg inn</button>
+            <button class="login-btn" id="login-btn" onclick="showLoginForm()">Logg inn/Register</button>
         </div>
         <!-- Viser brukernavn etter innlogging -->
         <div class="user-display" id="user-display"></div>
     </header>
+    <!-- Tekst på hovedsiden -->
+    <div class="welcome-text" id="welcome-text">
+        <p>Visste du at for mye kaffe kan ha negativ innvirkning på helsen din og ditt velvære? Overdreven koffeinforbruk kan føre til søvnproblemer, nervøsitet og til og med avhengighet.</p>
+        <p>Appen vår hjelper deg med å innføre sunnere vaner ved å gradvis redusere kaffeinntaket ditt og erstatte det med naturlige energikilder.</p>
+        <ul>
+            <li>Bedre søvn og hvile</li>
+            <li>Mer energi uten plutselige fall</li>
+            <li>Bedre konsentrasjon og klarhet i tankene</li>
+            <li>Redusert angst og stress</li>
+        </ul>
+        <p>Bli med oss og start reisen mot en sunnere livsstil – mindre kaffe gir større balanse i hverdagen!</p>
+    </div>
     <!-- Skjema for innlogging -->
     <div class="login-form" id="login-form">
         <input type="text" id="username" placeholder="Skriv inn navnet ditt" />
@@ -180,7 +212,9 @@
         // Funksjon for å vise innloggingsskjemaet
         function showLoginForm() {
             const loginForm = document.getElementById("login-form");
-            loginForm.style.display = "flex";
+            const welcomeText = document.getElementById("welcome-text");
+            loginForm.style.display = "flex"; // Pokaż formularz logowania
+            welcomeText.style.display = "none"; // Ukryj tekst powitalny
         }
 
         // Funksjon for å logge inn og vise innhold
@@ -193,8 +227,25 @@
                 contentContainer.innerHTML = `
                     <div class="content">
                         <h1>Velkommen, <span id="user-name">${username}</span>!</h1>
-                        <p>Dette er innholdet som vises etter innlogging.</p>
-                        <p>Hello World</p>
+                        <div class="content-section">
+                            <h2>Dagens motivasjons-booster</h2>
+                            <p>"quote"/bilde</p>
+                        </div>
+                        <div class="content-section">
+                            <h2>Koffein-grense</h2>
+                            <p>400mg</p>
+                            <p>65%</p>
+                            <p>Koffein-tracker diagram</p>
+                        </div>
+                        <div class="content-section">
+                            <h2>Drikke</h2>
+                            <p>kaffe</p>
+                            <p>red bull</p>
+                        </div>
+                        <div class="content-section">
+                            <h2>Fordeler med å kutte ned forbruket</h2>
+                            <p>Jeg har spart: 469kr</p>
+                        </div>
                     </div>
                 `;
                 // Skjuler innloggingsskjemaet
