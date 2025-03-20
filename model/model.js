@@ -29,31 +29,42 @@ const model = {
         },
         
         slide4:{
-            name:"Motivasjons-booster",
+            name:"",
             newImage:"", 
             newTextField:"",
             editMode: true, 
         },
-
-        slide5B:{
-            title:"Endre logg",
+        slide5:{
+            title:"",
             headers: ["kategori", "Dato", "Innhold"],
             logContent:[
-                {id: 1, category: "", date: "", content:"" },
-                {id: 2, category: "", date: "", content:"" },
+                {id: 1, category: "", date: "", content:"", delete: false, editMode: false },
+                {id: 2, category: "", date: "", content:"", delete: false, editMode: false },
+            ],
+
+           
+            editMode:true,
+        },
+        slide5B:{
+            title:"",
+            headers: ["kategori", "Dato", "Innhold"],
+            logContent:[
+                {id: 1, category: [], date: "", content:"" },
+                {id: 2, category: [], date: "", content:"" },
             ],
             editMode:true,
         }, 
         slide6:{
-            title: "Legg til drikke",
+            title: "",
             newDrink: [
                 {id:1, drinkName:"", coffeineNumber:""}
             ],
             placeholders: [
-                {name:"Kaffe", amountCoffeine: 20, addButton: false},
-                {name:"Red bull", amountCoffeine: 40, addButton: false}
+                {name:"", amountCoffeine: 20, addButton: false},
+                {name:"", amountCoffeine: 40, addButton: false}
             ]
-        }
+        },
+
     },
     
     data: {
@@ -68,7 +79,7 @@ const model = {
             editMode:false,
             },
         slide3: {
-            name: "dashboardPage",
+            name: "dashboard",
             boxes: [
                 {id:1, name:"MotivasjonsBooster", image:""},
                 {id:2, name:"Koffein-grense", limit:"", cursor:"", koffeinTracker:"", diagram:""},
@@ -79,20 +90,7 @@ const model = {
             profileBox: "",
         },
 
-        slide5:{
-            title:"Din logg",
-            headers: ["kategori", "Dato", "Innhold"],
-            logContent:[
-                {id: 1, category: "", date: "", content:"", delete: false, editMode: false },
-                {id: 2, category: "", date: "", content:"", delete: false, editMode: false },
-            ],
-
-            editContent: [
-                //input !!! flytt til inputs!!
-                {id: 0, category: "", date: "", content:"", addField: false, cancelField: false },
-            ],
-            editMode:true,
-        },
+        
 
         
     }
