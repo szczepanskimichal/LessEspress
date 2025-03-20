@@ -6,13 +6,12 @@ const model = {
     }, 
 
     inputs: {
-        slide1: {
-            username:"username", 
-            password:"password", 
-            description: "placeholder for intro text",
+        profilePage: {
+            username:"", 
+            password:"", 
         },
 
-        slide2B: {
+        editProfilePage: {
             newUsername: "",
             newPassword:"",
             checkPassword: "", 
@@ -21,40 +20,32 @@ const model = {
                 goalField: true,
                 commentField: true, 
             },
-            changeFields: {
+            editFields: {
                 changeGoals: "",
                 // others?
                 writingField:false,
             }
         },
         
-        slide4:{
-            name:"",
+        editMotivationPage:{
+            title:"",
             newImage:"", 
             newTextField:"",
             editMode: true, 
         },
-        slide5:{
+
+        editJournalPage:{
             title:"",
-            headers: ["kategori", "Dato", "Innhold"],
+            headers:[],
             logContent:[
                 {id: 1, category: "", date: "", content:"", delete: false, editMode: false },
                 {id: 2, category: "", date: "", content:"", delete: false, editMode: false },
             ],
-
            
             editMode:true,
         },
-        slide5B:{
-            title:"",
-            headers: ["kategori", "Dato", "Innhold"],
-            logContent:[
-                {id: 1, category: [], date: "", content:"" },
-                {id: 2, category: [], date: "", content:"" },
-            ],
-            editMode:true,
-        }, 
-        slide6:{
+
+        editDrinksPage:{
             title: "",
             newDrink: [
                 {id:1, drinkName:"", coffeineNumber:""}
@@ -68,7 +59,7 @@ const model = {
     },
     
     data: {
-        slide2: {
+        profilePage: {
             profileImg:"",
             inputAboutMe: "",
             publicProfileField: {
@@ -78,8 +69,9 @@ const model = {
                 },
             editMode:false,
             },
-        slide3: {
-            name: "dashboard",
+
+        dashboardPage: {
+            title: "dashboard",
             boxes: [
                 {id:1, name:"MotivasjonsBooster", image:""},
                 {id:2, name:"Koffein-grense", limit:"", cursor:"", koffeinTracker:"", diagram:""},
@@ -90,8 +82,16 @@ const model = {
             profileBox: "",
         },
 
-        
-
-        
+        journalPage:{
+            title:"",
+            headers:["kategori", "dato", "innhold"],
+            logContent:[
+                {id: 1, category: "", date: "", content:"" },
+                {id: 2, category: "", date: "", content:"" },
+            ],
+            placeholders:[
+                {}
+            ]
+        }
     }
 }
