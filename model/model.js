@@ -88,6 +88,7 @@ const model = {
             ],
 
             editContent: [
+                //input !!! flytt til inputs!!
                 {id: 0, category: "", date: "", content:"", addField: false, cancelField: false },
             ],
             editMode:true,
