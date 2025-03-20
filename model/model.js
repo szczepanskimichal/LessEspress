@@ -6,7 +6,7 @@ const model = {
     }, 
 
     inputs: {
-        profilePage: {
+        loginPage: {
             username:"", 
             password:"", 
         },
